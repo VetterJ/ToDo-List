@@ -11,22 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :Beschreibung %>
     <%= form.text_field :Beschreibung, id: :list_Beschreibung %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :verantwortlich %>
-    <%= form.text_field :verantwortlich, id: :list_verantwortlich %>
-  </div>
-
-  <div class="field">
-    <%= form.label :erledigt %>
-    <%= form.check_box :erledigt, id: :list_erledigt %>
+    <input class="form-control" id="list_verantwortlich">
+    <% form.text_field :verantwortlich, id: :list_verantwortlich %>
   </div>
 
   <div class="actions">
-    <%= form.submit "Speichern" %>
+    <%= form.submit "Aufgabe hinzufügen" %>
   </div>
 <% end %>
