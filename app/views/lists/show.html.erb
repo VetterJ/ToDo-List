@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Beschreibung:</strong>
+  <%= @list.Beschreibung %>
+</p>
+
+<p>
+  <strong>verantwortlich:</strong>
+  <%= @list.verantwortlich %>
+</p>
+
+<p>
+  <strong>erledigt:</strong>
+  <%= @list.erledigt %>
+</p>
+
+<%= link_to 'bearbeiten', edit_list_path(@list) %> |
+<%= link_to 'zurück', lists_path %>
