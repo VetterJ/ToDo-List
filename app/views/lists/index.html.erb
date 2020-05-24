@@ -2,10 +2,11 @@
 <h1>Aufgaben</h1>
 <table class="table table-hover">
   <thead>
-    <tr class="table-info">
+    <tr class="table-primary">
       <th>Beschreibung</th>
       <th>verantwortlich</th>
-      <th colspan=3></th>
+      <th><center>Status ändern</center></th>
+      <th>Aktion</th>
     </tr>
   </thead>
 
@@ -15,28 +16,58 @@
         <tr class="table-secondary">
          <td class="striker"><%= link_to list.Beschreibung, edit_list_path(list) %><% list.Beschreibung %></td> 
           <td><%= list.verantwortlich %></td>
+         
+          <td>
+            <center>
+            <%= form_for(list) do |f| %>
+                <%= f.text_field :Beschreibung, type: 'hidden' %>
+                <%= f.check_box :erledigt, id: :list_erledigt, :checked => false, :style => 'visibility: hidden' %> 
+                <%= f.submit "reaktivieren", class: "btn btn-secondary btn-sm" %>
+            <% end %>
+            </center>
+          </td>
+         
           <td>
             <% link_to 'anzeigen', list %>
             <% link_to 'bearbeiten', edit_list_path(list) %>
-            <%= link_to 'löschen', list, method: :delete, data: { confirm: 'Bist Du sicher?' } %>    
+
+            <%= link_to 'löschen', list, class: "btn btn-secondary btn-sm", method: :delete, data: { confirm: 'Bist Du sicher?' } %>    
           </td>
         </tr>
       <% elsif %>
         <tr>
           <td><%= link_to list.Beschreibung, edit_list_path(list) %><% list.Beschreibung %></td>
           <td><%= list.verantwortlich %></td>
+         
+          <td>
+            <center>
+            <%= form_for(list) do |f| %>
+                <%= f.text_field :Beschreibung, type: 'hidden' %>
+                <%= f.check_box :erledigt, id: :list_erledigt, :checked => true, :style => 'visibility: hidden' %> 
+                <%= f.submit "erledigt", class: "btn btn-secondary btn-sm" %>
+            <% end %>
+            </center>
+          </td>
+         
           <td>
             <% link_to 'anzeigen', list %>
             <% link_to 'bearbeiten', edit_list_path(list) %>
-            <%= link_to 'löschen', list, method: :delete, data: { confirm: 'Bist Du sicher?' } %>
+            <%= link_to 'löschen', list, class: "btn btn-secondary btn-sm", method: :delete, data: { confirm: 'Bist Du sicher?' } %>
           </td>
         </tr>
       <% end %>
     <% end %>
-      <%= render 'form_index2', list: @list %>
+      
+        <%= render 'form_index2', list: @list %>
+     
+
   </tbody>
 </table>
 
 <br>
 
 <% link_to 'Neue Aufgabe', new_list_path, class:"btn btn-light" %>
+<%= link_to 'Erledigte Aufgaben löschen', home_bereinigen_path, class:"btn btn-secondary text-light", data: { confirm: 'Bist Du sicher?' } %>
+<BR/><BR/>
+
+<%= link_to 'Liste leeren', home_leeren_path, class:"btn btn-danger text-light", data: { confirm: 'Bist Du sicher? Alle Aufgaben weren endgültig gelöscht!' } %>

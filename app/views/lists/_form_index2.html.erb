@@ -12,19 +12,23 @@
     </div>
   <% end %>
 
-  <tr>
+  <tr class="table-success">
   	<td>
-   		<% form.label :Beschreibung %>
- 		<%= form.text_field :Beschreibung, id: :list_Beschreibung %>
+      <div class="form-group">
+        <% form.label :Beschreibung %>
+        <%= form.text_field :Beschreibung, id: :list_Beschreibung, class:"form-control" %>
+      </div>
    	</td>
   	<td>
- 		<% form.label :verantwortlich %>
-		<%= form.text_field :verantwortlich, id: :list_verantwortlich %>
-	</td>
-
+      <div class="form-group">
+        <% form.label :verantwortlich %>
+        <%= form.text_field :verantwortlich, id: :list_verantwortlich, class:"form-control" %>
+      </div>
+    </td>
+    <td></td>
   	<td>
-  <div class="actions">
-    <%= form.submit "Aufgabe hinzufügen" %>
-  </td>
+      <div class="actions">
+        <%= form.submit "hinzufügen", class: "btn btn-secondary btn-sm" %>
+    </td>
   </tr>
 <% end %>

@@ -1,0 +1,16 @@
+<%= form_with(model: list, local: true) do |form| %>
+  <% if list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(list.errors.count, "error") %> prohibited this list from being saved:</h2>
+
+      <ul>
+      <% list.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= link_to 'Erledigte Aufgaben löschen', home_bereinigen_path, class:"btn btn-light", data: { confirm: 'Bist Du sicher?' } %>
+
+<% end %>
